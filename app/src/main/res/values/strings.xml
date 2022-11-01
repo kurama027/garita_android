@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">garita_test</string>
+    <!--MAIN ACTIVITY-->
+    <string name="Btn_Login">Login</string>
+    <string name="Btn_Registro">Registro</string>
+    <!--Actividad Registro-->
+    <string name="CrearCuantaTXT">Crear una Cuenta</string>
+    <string name="NombreEt">Nombre</string>
+    <string name="CorreoEt">Correo Electronico</string>
+    <string name="ContraseñaEt">Contraseña</string>
+    <string name="ConfirmarContraseñaEt">Confirmar Contraseña</string>
+    <string name="RegistrarUsuario">Registrar</string>
+    <string name="TengounacuentaTXT">Tengo una cuenta</string>
+
+    <!--Menu Principal-->
+    <string name="CerrarSesion">Salir</string>
+
+    <!--Actividad Login-->
+    <string name="IniciarSesionTXT">Iniciar Sesion</string>
+    <string name="CorreoLogin">Correo</string>
+    <string name="PassLogin">Contraseña</string>
+    <string name="Btn_Logeo">Ingresar</string>
+    <string name="UsuarioNuevoTXT">Notienes una cuenta?. Registrate</string>
+
+</resources>
