@@ -82,7 +82,7 @@
             android:background="@drawable/round_input_text">
 
             <EditText
-                android:id="@+id/ContraseñaEt"
+                android:id="@+id/PasswordEt"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_toStartOf="@+id/iv_passwordShowRegister"
@@ -117,7 +117,7 @@
             android:background="@drawable/round_input_text">
 
             <EditText
-                android:id="@+id/ConfirmarContraseñaEt"
+                android:id="@+id/ConfirmarPasswordEt"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_toStartOf="@+id/iv_confirmPasswordShowRegister"
