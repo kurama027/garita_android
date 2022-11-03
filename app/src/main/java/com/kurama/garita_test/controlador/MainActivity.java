@@ -12,6 +12,7 @@ import com.kurama.garita_test.R;
 public class MainActivity extends AppCompatActivity {
     Button Btn_Login, Btn_Registro;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

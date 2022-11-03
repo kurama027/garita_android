@@ -13,23 +13,25 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Garita_test"
         tools:targetApi="31">
+
+        <activity android:name=".Perfil.Perfil_Usuario"></activity>
+        <activity android:name=".ObjetosArchivados.Objetos_Archivados" />
+        <activity android:name=".ListarObjetos.Listar_Objetos" />
+        <activity android:name=".AgregarObjeto.Agregar_Objeto" />
+
         <activity
             android:name=".controlador.Registro"
             android:exported="false" />
         <activity
             android:name=".controlador.Pantalla_de_Carga"
-            android:exported="true" >
-
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-
-
-    <activity
+        <activity
             android:name=".controlador.MenuPrincipal"
             android:exported="false" />
         <activity

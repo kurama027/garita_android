@@ -13,7 +13,26 @@
     <string name="TengounacuentaTXT">Tengo una cuenta</string>
 
     <!--Menu Principal-->
+    <string name="BienvenidoPrincipal">Bienvenido(a)</string>
+    <string name="NombrePrincipal"> -- </string>
+    <string name="CorreoPrincipal"> -- </string>
     <string name="CerrarSesion">Salir</string>
+    <string name="UidPrincipal"> -- </string>
+
+    <string name="AgregarObjetos">Agregar</string>
+    <string name="ListarObjetos">Mis Objetos</string>
+    <string name="Archivados">Archivados</string>
+    <string name="Perfil">Perfil</string>
+    <string name="AcercaDe">Acerca de</string>
+    <!--Agregar NOta-->
+    <string name="Uid_Usuario">Uid del usuario</string>
+    <string name="Correo_usuario">Correo de usuario</string>
+    <string name="Fecha_hora_actual">Fecha y hora actual</string>
+    <string name="Titulo">Titulo</string>
+    <string name="Descripcion">Descripcion</string>
+    <string name="Btn_Calendario">Calendario</string>
+    <string name="Fecha">00/00/0000</string>
+    <string name="Estado">No finalizado</string>
 
     <!--Actividad Login-->
     <string name="IniciarSesionTXT">Iniciar Sesion</string>
@@ -21,5 +40,8 @@
     <string name="PassLogin">Contraseña</string>
     <string name="Btn_Logeo">Ingresar</string>
     <string name="UsuarioNuevoTXT">Notienes una cuenta?. Registrate</string>
+
+    <string name="Agregar_Nota_BD">Agregar</string>
+
 
 </resources>
