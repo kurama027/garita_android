@@ -35,6 +35,9 @@
             android:name=".controlador.Login"
             android:exported="false" />
         <activity
+            android:name=".controlador.Registro"
+            android:exported="false" />
+        <activity
             android:name=".controlador.MainActivity"
             android:exported="true">
             <intent-filter>
