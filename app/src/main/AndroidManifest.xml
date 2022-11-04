@@ -20,10 +20,7 @@
         <activity android:name=".AgregarObjeto.Agregar_Objeto" />
 
         <activity
-            android:name=".controlador.Registro"
-            android:exported="false" />
-        <activity
-            android:name=".controlador.Pantalla_de_Carga"
+            android:name=".controlador.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

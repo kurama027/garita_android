@@ -7,11 +7,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,6 +38,9 @@ public class Login extends AppCompatActivity {
     //Validar los datos
     String correo = "" , password = "";
 
+    private boolean passwordShowding = false;
+    private ImageView ivPasswordIcon;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +54,7 @@ public class Login extends AppCompatActivity {
         PassLogin = findViewById(R.id.PassLogin);
         Btn_Logeo = findViewById(R.id.Btn_Logeo);
         UsuarioNuevoTXT = findViewById(R.id.UsuarioNuevoTXT);
+        ivPasswordIcon = (ImageView) findViewById(R.id.iv_passwordShow);
 
         firebaseAuth = FirebaseAuth.getInstance();
 
@@ -69,6 +75,27 @@ public class Login extends AppCompatActivity {
                 startActivity(new Intent(Login.this, Registro.class));
             }
         });
+
+        ivPasswordIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //verificar si la contraseña es visible o no
+                if (passwordShowding) {
+                    passwordShowding = false;
+                    PassLogin.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    ivPasswordIcon.setImageResource(R.drawable.ic_password_hide);
+                } else {
+                    passwordShowding = true;
+                    PassLogin.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                    ivPasswordIcon.setImageResource(R.drawable.ic_password_show);
+                }
+
+                //Mover el cursor al final del texto
+                PassLogin.setSelection(PassLogin.length());
+            }
+        });
+
     }
 
     private void ValidarDatos() {
