@@ -6,11 +6,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,7 +28,7 @@ import java.util.HashMap;
 
 public class Registro extends AppCompatActivity {
 
-    EditText Nombreet,Correoet,Contaseñaet,ConfirmarContraseñaet;
+    EditText Nombreet,Correoet,Passwordet,ConfirmarPasswordet;
     Button RegistrarUsuario;
     TextView TengounacuentaTXT;
 
@@ -36,6 +38,10 @@ public class Registro extends AppCompatActivity {
     //
     String nombre = " " , correo = " ", password = "" , confirmarpassword = "";
 
+    private ImageView ivPasswordIcon, ivConfirmPasswordIcon;
+    private boolean passwordShowding = false;
+    private boolean confirmPasswordShowding = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,10 +49,12 @@ public class Registro extends AppCompatActivity {
 
         Nombreet = findViewById(R.id.NombreEt);
         Correoet = findViewById(R.id.CorreoEt);
-        Contaseñaet = findViewById(R.id.ContraseñaEt);
-        ConfirmarContraseñaet = findViewById(R.id.ConfirmarContraseñaEt);
+        Passwordet = findViewById(R.id.PasswordEt);
+        ConfirmarPasswordet = findViewById(R.id.ConfirmarPasswordEt);
         RegistrarUsuario = findViewById(R.id.RegistrarUsuario);
         TengounacuentaTXT = findViewById(R.id.TengounacuentaTXT);
+        ivPasswordIcon = findViewById(R.id.iv_passwordShowRegister);
+        ivConfirmPasswordIcon = findViewById(R.id.iv_confirmPasswordShowRegister);
 
         firebaseAuth = FirebaseAuth.getInstance();
 
@@ -68,14 +76,54 @@ public class Registro extends AppCompatActivity {
                 startActivity(new Intent(Registro.this, Login.class));
             }
         });
+
+        ivPasswordIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //verificar si la contraseña es visible o no
+                if (passwordShowding) {
+                    passwordShowding = false;
+                    Passwordet.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    ivPasswordIcon.setImageResource(R.drawable.ic_password_hide);
+                } else {
+                    passwordShowding = true;
+                    Passwordet.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                    ivPasswordIcon.setImageResource(R.drawable.ic_password_show);
+                }
+
+                //Mover el cursor al final del texto
+                Passwordet.setSelection(Passwordet.length());
+            }
+        });
+
+        ivConfirmPasswordIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //verificar si la contraseña es visible o no
+                if (confirmPasswordShowding) {
+                    confirmPasswordShowding = false;
+                    ConfirmarPasswordet.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    ivConfirmPasswordIcon.setImageResource(R.drawable.ic_password_show);
+                } else {
+                    confirmPasswordShowding = true;
+                    ConfirmarPasswordet.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                    ivConfirmPasswordIcon.setImageResource(R.drawable.ic_password_hide);
+                }
+
+                //Mover el cursor al final del texto
+                ConfirmarPasswordet.setSelection(ConfirmarPasswordet.length());
+            }
+        });
     }
 
     private void ValidarDatos() {
 
         nombre = Nombreet.getText().toString();
         correo = Correoet.getText().toString();
-        password = Contaseñaet.getText().toString();
-        confirmarpassword = ConfirmarContraseñaet.getText().toString();
+        password = Passwordet.getText().toString();
+        confirmarpassword = ConfirmarPasswordet.getText().toString();
 
         if (TextUtils.isEmpty(nombre)){
             Toast.makeText(this, "Ingrese nombre", Toast.LENGTH_SHORT).show();
