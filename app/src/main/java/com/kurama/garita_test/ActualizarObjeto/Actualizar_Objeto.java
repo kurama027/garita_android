@@ -1,4 +1,4 @@
-package com.kurama.garita_test.ActualizarNota;
+package com.kurama.garita_test.ActualizarObjeto;
 
 import androidx.appcompat.app.AppCompatActivity;
 

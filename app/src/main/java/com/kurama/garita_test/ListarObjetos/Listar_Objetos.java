@@ -25,12 +25,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.kurama.garita_test.ActualizarNota.Actualizar_Objeto;
+import com.kurama.garita_test.ActualizarObjeto.Actualizar_Objeto;
 import com.kurama.garita_test.Objetos.Objeto;
 import com.kurama.garita_test.R;
 import com.kurama.garita_test.ViewHolder.ViewHolder_Objeto;
-
-import org.jetbrains.annotations.NotNull;
 
 public class Listar_Objetos extends AppCompatActivity {
 
