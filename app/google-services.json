@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "86160427021",
+    "project_id": "garita-app-dd1e3",
+    "storage_bucket": "garita-app-dd1e3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:86160427021:android:9073973394f6389679ed44",
+        "android_client_info": {
+          "package_name": "com.kurama.garita_test"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "86160427021-c102e7tebn5vpgviclkfiqmn5esk6l5p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kurama.garita_test",
+            "certificate_hash": "2dcbd4fb25fd11a37a89f760c1575e990edde53e"
+          }
+        },
+        {
+          "client_id": "86160427021-d30d8vahq0tmat3t3210smq3d2ijmpjj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARpy5doootx-LekogCpbZnM_7E8rvbNpA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "86160427021-d30d8vahq0tmat3t3210smq3d2ijmpjj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

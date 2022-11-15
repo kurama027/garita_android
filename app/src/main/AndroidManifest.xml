@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.kurama.garita_test">
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Garita_test"
+        tools:targetApi="31">
+
+        <activity android:name=".Perfil.Perfil_Usuario"></activity>
+        <activity android:name=".ObjetosArchivados.Objetos_Archivados" />
+        <activity android:name=".ListarObjetos.Listar_Objetos" />
+        <activity android:name=".AgregarObjeto.Agregar_Objeto" />
+
+        <activity
+            android:name=".controlador.SplashActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".controlador.MenuPrincipal"
+            android:exported="false" />
+        <activity
+            android:name=".controlador.Login"
+            android:exported="false" />
+        <activity
+            android:name=".controlador.Registro"
+            android:exported="false" />
+        <activity
+            android:name=".controlador.MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
