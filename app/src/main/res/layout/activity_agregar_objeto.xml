@@ -21,7 +21,7 @@
             android:textSize="18sp"/>
         <!--UID DEL CORREO DEL USUARIO-->
         <TextView
-            android:id="@+id/Correo_Usuario"
+            android:id="@+id/Correo_usuario"
             android:hint="@string/Correo_usuario"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

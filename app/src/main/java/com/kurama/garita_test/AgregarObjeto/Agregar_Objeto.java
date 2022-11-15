@@ -27,10 +27,12 @@ import java.util.Locale;
 
 public class Agregar_Objeto extends AppCompatActivity {
 
-    TextView Uid_Usuario,Correo_Usuario,Fecha_hora_actual,Fecha,Estado;
+    TextView Uid_Usuario, Correo_usuario, Fecha_hora_actual, Fecha, Estado;
     EditText Titulo, Descripcion;
     Button Btn_Calendario;
-    int dia,mes, anio;
+
+    int dia, mes , anio;
+
     DatabaseReference BD_Firebase;
 
     @Override
@@ -86,8 +88,7 @@ public class Agregar_Objeto extends AppCompatActivity {
         });
     }
     private void InicializarVariables(){
-        Uid_Usuario = findViewById(R.id.Uid_Usuario);
-        Correo_Usuario = findViewById(R.id.Correo_Usuario);
+        Correo_usuario = findViewById(R.id.Correo_usuario);
         Fecha_hora_actual = findViewById(R.id.Fecha_hora_actual);
         Fecha = findViewById(R.id.Fecha);
         Estado = findViewById(R.id.Estado);
@@ -99,10 +100,11 @@ public class Agregar_Objeto extends AppCompatActivity {
         BD_Firebase = FirebaseDatabase.getInstance().getReference();
     }
     private void ObtenerDatos(){
-        String uid_recuperacion = getIntent().getStringExtra("Uid");
+        String uid_recuperado = getIntent().getStringExtra("Uid");
         String correo_recuperado = getIntent().getStringExtra("Correo");
-        Uid_Usuario.setText(uid_recuperacion);
-        Correo_Usuario.setText(correo_recuperado);
+
+        Uid_Usuario.setText(uid_recuperado);
+        Correo_usuario.setText(correo_recuperado);
     }
     private void obtener_Fecha_Hora_Actual(){
         String Fecha_hora_registro = new SimpleDateFormat("dd-MM-yyyy/HH:mm:ss a", Locale.getDefault()).format(System.currentTimeMillis());
@@ -112,7 +114,7 @@ public class Agregar_Objeto extends AppCompatActivity {
 
         //obtener datos
         String uid_usuario =Uid_Usuario.getText().toString();
-        String correo_usuario = Correo_Usuario.getText().toString();
+        String correo_usuario = Correo_usuario.getText().toString();
         String fecha_hora_actual = Fecha_hora_actual.getText().toString();
         String titulo = Titulo.getText().toString();
         String descripcion = Descripcion.getText().toString();
@@ -156,7 +158,7 @@ public class Agregar_Objeto extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.Agregar_Nota_BD:
+            case R.id.Agregar_Objeto_BD:
                 Agregar_Nota();
                 break;
         }
