@@ -103,7 +103,7 @@ public class Listar_Objetos extends AppCompatActivity {
                         String titulo = getItem(position).getTitulo();
                         String descripcion = getItem(position).getDescripcion();
                         String fecha_nota = getItem(position).getFecha_objeto();
-                        String estado = getItem(position).getId_objeto();
+                        String estado = getItem(position).getEstado();
 
                         //Declarar las vistas
                         Button CD_Eliminar, CD_Actualizar;

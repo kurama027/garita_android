@@ -3,6 +3,7 @@ package com.kurama.garita_test.ViewHolder;
 
 import android.content.Context;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -56,6 +57,8 @@ public class ViewHolder_Objeto extends RecyclerView.ViewHolder{
         TextView Id_objeto_Item, Uid_Usuario_Item, Correo_usuario_Item,Fecha_hora_registro_Item,Titulo_Item,
                 Descripcion_Item, Fecha_Item, Estado_Item;
 
+        ImageView Objeto_Encontrado_Item, Objeto_No_Encontrado_Item;
+
         //ESTABLECER LA CONEXIÓN CON EL ITEM
         Id_objeto_Item = mView.findViewById(R.id.Id_objeto_Item);
         Uid_Usuario_Item = mView.findViewById(R.id.Uid_Usuario_Item);
@@ -65,6 +68,8 @@ public class ViewHolder_Objeto extends RecyclerView.ViewHolder{
         Descripcion_Item = mView.findViewById(R.id.Descripcion_Item);
         Fecha_Item = mView.findViewById(R.id.Fecha_Item);
         Estado_Item = mView.findViewById(R.id.Estado_Item);
+        Objeto_Encontrado_Item = mView.findViewById(R.id.Objeto_Encontrado_Item);
+        Objeto_No_Encontrado_Item = mView.findViewById(R.id.Objeto_No_Encontrado_Item);
 
         //SETEAR LA INFORMACIÓN DENTRO DEL ITEM
         Id_objeto_Item.setText(id_objeto);
@@ -75,6 +80,13 @@ public class ViewHolder_Objeto extends RecyclerView.ViewHolder{
         Descripcion_Item.setText(descripcion);
         Fecha_Item.setText(fecha_objeto);
         Estado_Item.setText(estado);
+
+        // GESTIONAMOS EL COLOR DEL ESTADO
+        if(estado.equals("Encontrado")){
+            Objeto_Encontrado_Item.setVisibility(View.VISIBLE);
+        } else {
+            Objeto_No_Encontrado_Item.setVisibility(View.VISIBLE);
+        }
     }
 
 }

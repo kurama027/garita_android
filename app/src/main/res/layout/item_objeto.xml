@@ -80,7 +80,7 @@
                 android:text="@string/Descripcion_Item"
                 android:textSize="18sp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="50dp"/>
 
             <!--Fecha_Item-->
             <TextView
@@ -90,13 +90,44 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
-            <!--Estado_Item-->
-            <TextView
-                android:id="@+id/Estado_Item"
-                android:layout_marginTop="15dp"
-                android:text="@string/Estado_Item"
+            <!--ESTADO DE LA NOTA-->
+            <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/Objeto_Encontrado_Item"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_gravity="center"
+                    android:visibility="gone"
+                    android:layout_marginStart="5dp"
+                    android:background="#16A085"/>
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/Objeto_No_Encontrado_Item"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_gravity="center"
+                    android:visibility="gone"
+                    android:layout_marginStart="5dp"
+                    android:background="#E74C3C"/>
+
+
+                <!--Estado_Item-->
+                <TextView
+                    android:id="@+id/Estado_Item"
+                    android:text="@string/Estado_Item"
+                    android:textSize="20dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
