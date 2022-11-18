@@ -6,8 +6,8 @@
         <entry key="..\:/garita_test/app/src/main/res/drawable-anydpi/icono_agregar_objeto.xml" value="0.18" />
         <entry key="..\:/garita_test/app/src/main/res/drawable/icono_calendario.xml" value="0.1" />
         <entry key="..\:/garita_test/app/src/main/res/drawable/icono_correo.xml" value="0.176" />
-        <entry key="..\:/garita_test/app/src/main/res/layout/activity_actualizar_objeto.xml" value="0.33" />
-        <entry key="..\:/garita_test/app/src/main/res/layout/activity_agregar_objeto.xml" value="0.25" />
+        <entry key="..\:/garita_test/app/src/main/res/layout/activity_actualizar_objeto.xml" value="0.25" />
+        <entry key="..\:/garita_test/app/src/main/res/layout/activity_agregar_objeto.xml" value="0.33" />
         <entry key="..\:/garita_test/app/src/main/res/layout/activity_listar_objetos.xml" value="0.25" />
         <entry key="..\:/garita_test/app/src/main/res/layout/activity_login.xml" value="0.24320652173913043" />
         <entry key="..\:/garita_test/app/src/main/res/layout/activity_main.xml" value="0.24320652173913043" />
@@ -20,6 +20,7 @@
         <entry key="..\:/garita_test/app/src/main/res/layout/dialogo_opciones.xml" value="0.2677083333333333" />
         <entry key="..\:/garita_test/app/src/main/res/layout/item_objeto.xml" value="0.5" />
         <entry key="..\:/garita_test/app/src/main/res/menu/menu_actualizar.xml" value="0.2677083333333333" />
+        <entry key="..\:/garita_test/app/src/main/res/menu/menu_agregar.xml" value="0.26875" />
         <entry key="..\:/garita_test/app/src/main/res/menu/menu_garita.xml" value="0.2677083333333333" />
       </map>
     </option>

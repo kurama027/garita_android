@@ -93,7 +93,7 @@ public class Actualizar_Objeto extends AppCompatActivity implements AdapterView.
         fecha_registro_R = intent.getString("fecha_registro");
         titulo_R = intent.getString("titulo");
         descripcion_R = intent.getString("descripcion");
-        fecha_R = intent.getString("fecha_objeto");
+        fecha_R = intent.getString("fecha_nota");
         estado_R = intent.getString("estado");
     }
 
@@ -117,6 +117,7 @@ public class Actualizar_Objeto extends AppCompatActivity implements AdapterView.
         if (estado_nota.equals("Encontrado")){
             Objeto_Encontrado.setVisibility(View.VISIBLE);
         }
+
     }
 
     private void SeleccionarFecha(){
@@ -187,10 +188,10 @@ public class Actualizar_Objeto extends AppCompatActivity implements AdapterView.
                 for (DataSnapshot ds : snapshot.getChildren()){
                     ds.getRef().child("titulo").setValue(tituloActualizar);
                     ds.getRef().child("descripcion").setValue(descripcionActualizar);
-                    ds.getRef().child("fecha_objeto").setValue(fechaActualizar);
+                    ds.getRef().child("fecha_nota").setValue(fechaActualizar);
                     ds.getRef().child("estado").setValue(estadoActualizar);
                 }
-                Toast.makeText(Actualizar_Objeto.this, "Objeto actualizado con exito", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Actualizar_Objeto.this, "Objetos actualizado con exito", Toast.LENGTH_SHORT).show();
                 onBackPressed();
             }
 
@@ -200,8 +201,6 @@ public class Actualizar_Objeto extends AppCompatActivity implements AdapterView.
             }
         });
     }
-
-
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -213,14 +212,12 @@ public class Actualizar_Objeto extends AppCompatActivity implements AdapterView.
         if (ESTADO_ACTUAL.equals("Encontrado")){
             Estado_nuevo.setText(Posicion_1);
         }
-
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();

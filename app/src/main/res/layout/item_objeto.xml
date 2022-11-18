@@ -93,9 +93,9 @@
             <!--Estado_Item-->
             <TextView
                 android:id="@+id/Estado_Item"
+                android:layout_marginTop="15dp"
                 android:text="@string/Estado_Item"
                 android:layout_width="match_parent"
-                android:visibility="gone"
                 android:layout_height="wrap_content"/>
 
         </androidx.appcompat.widget.LinearLayoutCompat>

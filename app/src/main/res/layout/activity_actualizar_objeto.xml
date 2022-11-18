@@ -71,6 +71,7 @@
                 android:layout_marginStart="5dp"
                 android:background="#E74C3C"/>
 
+
             <TextView
                 android:id="@+id/Estado_A"
                 android:text="@string/Estado_A"
@@ -147,5 +148,6 @@
 
 
     </androidx.appcompat.widget.LinearLayoutCompat>
+
 
 </ScrollView>
