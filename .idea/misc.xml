@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/androidprojects/garita_android/app/src/main/res/layout/activity_actualizar_objeto.xml" value="0.1" />
         <entry key="..\:/garita_test/app/src/main/res/drawable/icono_correo.xml" value="0.176" />
         <entry key="..\:/garita_test/app/src/main/res/layout/activity_agregar_objeto.xml" value="0.25" />
         <entry key="..\:/garita_test/app/src/main/res/layout/activity_listar_objetos.xml" value="0.25" />

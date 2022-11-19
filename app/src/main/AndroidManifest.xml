@@ -13,12 +13,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Garita_test"
         tools:targetApi="31">
-
-        <activity android:name=".Perfil.Perfil_Usuario"></activity>
+        <activity
+            android:name=".Actualizar_Objeto"
+            android:exported="false" />
+        <activity android:name=".Perfil.Perfil_Usuario" />
         <activity android:name=".ObjetosArchivados.Objetos_Archivados" />
         <activity android:name=".ListarObjetos.Listar_Objetos" />
         <activity android:name=".AgregarObjeto.Agregar_Objeto" />
-
         <activity
             android:name=".controlador.Registro"
             android:exported="false" />
