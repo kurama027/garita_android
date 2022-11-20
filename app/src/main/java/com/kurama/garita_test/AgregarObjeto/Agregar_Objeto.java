@@ -113,7 +113,7 @@ public class Agregar_Objeto extends AppCompatActivity {
         Fecha_hora_actual.setText(Fecha_hora_registro);
     }
 
-    private void Agregar_Nota() {
+    private void Agregar_Objeto() {
 //Obtener los datos
         String uid_usuario = Uid_Usuario.getText().toString();
         String correo_usuario = Correo_usuario.getText().toString();
@@ -127,7 +127,7 @@ public class Agregar_Objeto extends AppCompatActivity {
         if (!uid_usuario.equals("") && !correo_usuario.equals("") && !fecha_hora_actual.equals("") &&
                 !titulo.equals("") && !descripcion.equals("") && ! fecha.equals("") && !estado.equals("")){
 
-            Objeto nota = new Objeto(correo_usuario+"/"+fecha_hora_actual,
+            Objeto objeto = new Objeto(correo_usuario+"/"+fecha_hora_actual,
                     uid_usuario,
                     correo_usuario,
                     fecha_hora_actual,
@@ -140,7 +140,7 @@ public class Agregar_Objeto extends AppCompatActivity {
             //Establecer el nombre de la BD
             String Nombre_BD = "Objetos_Publicados";
 
-            BD_Firebase.child(Nombre_BD).child(Objeto_usuario).setValue(nota);
+            BD_Firebase.child(Nombre_BD).child(Objeto_usuario).setValue(objeto);
 
             Toast.makeText(this, "Se ha agregado el objeto exitosamente", Toast.LENGTH_SHORT).show();
             onBackPressed();
@@ -163,7 +163,7 @@ public class Agregar_Objeto extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.Agregar_Objeto_BD:
-                Agregar_Nota();
+                Agregar_Objeto();
                 break;
         }
         return super.onOptionsItemSelected(item);

@@ -56,7 +56,7 @@ public class Actualizar_Objeto extends AppCompatActivity implements AdapterView.
         InicializarVistas();
         RecuperarDatos();
         SetearDatos();
-        ComprobarEstadoNota();
+        ComprobarEstadoobjeto();
         Spinner_Estado();
 
         Btn_Calendario_A.setOnClickListener(new View.OnClickListener() {
@@ -93,7 +93,7 @@ public class Actualizar_Objeto extends AppCompatActivity implements AdapterView.
         fecha_registro_R = intent.getString("fecha_registro");
         titulo_R = intent.getString("titulo");
         descripcion_R = intent.getString("descripcion");
-        fecha_R = intent.getString("fecha_nota");
+        fecha_R = intent.getString("fecha_objeto");
         estado_R = intent.getString("estado");
     }
 
@@ -108,13 +108,13 @@ public class Actualizar_Objeto extends AppCompatActivity implements AdapterView.
         Estado_A.setText(estado_R);
     }
 
-    private void ComprobarEstadoNota(){
-        String estado_nota = Estado_A.getText().toString();
+    private void ComprobarEstadoobjeto(){
+        String estado_objeto = Estado_A.getText().toString();
 
-        if (estado_nota.equals("Perdido")){
+        if (estado_objeto.equals("Perdido")){
             Objeto_No_Encontrado.setVisibility(View.VISIBLE);
         }
-        if (estado_nota.equals("Encontrado")){
+        if (estado_objeto.equals("Encontrado")){
             Objeto_Encontrado.setVisibility(View.VISIBLE);
         }
 
@@ -171,7 +171,7 @@ public class Actualizar_Objeto extends AppCompatActivity implements AdapterView.
         Spinner_estado.setOnItemSelectedListener(this);
     }
 
-    private void ActualizarNotaBD(){
+    private void ActualizarObjetoBD(){
         String tituloActualizar = Titulo_A.getText().toString();
         String descripcionActualizar = Descripcion_A.getText().toString();
         String fechaActualizar = Fecha_A.getText().toString();
@@ -188,7 +188,7 @@ public class Actualizar_Objeto extends AppCompatActivity implements AdapterView.
                 for (DataSnapshot ds : snapshot.getChildren()){
                     ds.getRef().child("titulo").setValue(tituloActualizar);
                     ds.getRef().child("descripcion").setValue(descripcionActualizar);
-                    ds.getRef().child("fecha_nota").setValue(fechaActualizar);
+                    ds.getRef().child("fecha_objeto").setValue(fechaActualizar);
                     ds.getRef().child("estado").setValue(estadoActualizar);
                 }
                 Toast.makeText(Actualizar_Objeto.this, "Objetos actualizado con exito", Toast.LENGTH_SHORT).show();
@@ -229,7 +229,7 @@ public class Actualizar_Objeto extends AppCompatActivity implements AdapterView.
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.Actualizar_Objeto_BD:
-                ActualizarNotaBD();
+                ActualizarObjetoBD();
                 //Toast.makeText(this, "Nota Actualizada", Toast.LENGTH_SHORT).show();
                 break;
         }

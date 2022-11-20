@@ -3,6 +3,7 @@ package com.kurama.garita_test.controlador;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.LinearLayoutCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,17 +21,19 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.kurama.garita_test.AgregarObjeto.Agregar_Objeto;
+import com.kurama.garita_test.ListaUsuario.Lista_Usuario;
 import com.kurama.garita_test.ListarObjetos.Listar_Objetos;
 import com.kurama.garita_test.ObjetosArchivados.Objetos_Archivados;
 import com.kurama.garita_test.Perfil.Perfil_Usuario;
 import com.kurama.garita_test.R;
 
 public class MenuPrincipal extends AppCompatActivity {
-    Button AgregarObjetos, ListarObjetos, Archivados,Perfil,CerrarSesion;
+    Button AgregarObjetos, ListarObjetos, Archivados,Perfil, ModoUser,CerrarSesion;
     FirebaseAuth firebaseAuth;
     FirebaseUser user;
     TextView UidPrincipal, NombresPrincipal, CorreoPrincipal;
     ProgressBar progressBarDatos;
+    LinearLayoutCompat Linear_Nombres , Linear_Correos;
     DatabaseReference Usuarios;
 
     @Override
@@ -42,13 +45,15 @@ public class MenuPrincipal extends AppCompatActivity {
         NombresPrincipal = findViewById(R.id.NombresPrincipal);
         CorreoPrincipal = findViewById(R.id.CorreoPrincipal);
         progressBarDatos = findViewById(R.id.progressBarDatos);
+        Linear_Nombres = findViewById(R.id.Linear_Nombres);
+        Linear_Correos = findViewById(R.id.Linear_Correo);
         UidPrincipal = findViewById(R.id.UidPrincipal);
         Usuarios = FirebaseDatabase.getInstance().getReference("Usuarios");
         AgregarObjetos = findViewById(R.id.AgregarObjetos);
         ListarObjetos = findViewById(R.id.ListarObjetos);
         Archivados = findViewById(R.id.Archivados);
         Perfil = findViewById(R.id.Perfil);
-
+        ModoUser = findViewById(R.id.ModoUser);
         CerrarSesion = findViewById(R.id.CerrarSesion);
         firebaseAuth = FirebaseAuth.getInstance();
         user = firebaseAuth.getCurrentUser();
@@ -90,6 +95,15 @@ public class MenuPrincipal extends AppCompatActivity {
             }
         });
 
+        ModoUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MenuPrincipal.this, Lista_Usuario.class));
+                Toast.makeText(MenuPrincipal.this, "Modo Usuario", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
         CerrarSesion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -125,9 +139,11 @@ public class MenuPrincipal extends AppCompatActivity {
                     //El progressbar se oculta
                     progressBarDatos.setVisibility(View.GONE);
                     //Los TextView se muestran
-                    UidPrincipal.setVisibility(View.VISIBLE);
-                    NombresPrincipal.setVisibility(View.VISIBLE);
-                    CorreoPrincipal.setVisibility(View.VISIBLE);
+                    //UidPrincipal.setVisibility(View.VISIBLE);
+                    //NombresPrincipal.setVisibility(View.VISIBLE);
+                    //CorreoPrincipal.setVisibility(View.VISIBLE);
+                    Linear_Nombres.setVisibility(View.VISIBLE);
+                    Linear_Correos.setVisibility(View.VISIBLE);
 
                     //Obtener los datos
                     String uid = ""+snapshot.child("uid").getValue();
@@ -145,6 +161,7 @@ public class MenuPrincipal extends AppCompatActivity {
                     Archivados.setEnabled(true);
                     Perfil.setEnabled(true);
                     CerrarSesion.setEnabled(true);
+                    ModoUser.setEnabled(true);
 
                 }
             }

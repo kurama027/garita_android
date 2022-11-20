@@ -1,4 +1,4 @@
-package com.kurama.garita_test.ListarObjetos;
+package com.kurama.garita_test.ListaUsuario;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -12,6 +12,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -27,12 +30,15 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.kurama.garita_test.ActualizarObjeto.Actualizar_Objeto;
 import com.kurama.garita_test.Detalle.Detalle_Objeto;
+import com.kurama.garita_test.ListarObjetos.Listar_Objetos;
 import com.kurama.garita_test.Objetos.Objeto;
 import com.kurama.garita_test.R;
 import com.kurama.garita_test.ViewHolder.ViewHolder_Objeto;
+import com.kurama.garita_test.controlador.Login;
+import com.kurama.garita_test.controlador.MenuPrincipal;
+import com.kurama.garita_test.controlador.Pantalla_de_Carga;
 
-public class Listar_Objetos extends AppCompatActivity {
-
+public class Lista_Usuario extends AppCompatActivity {
     RecyclerView recyclerviewObjetos;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference BASE_DE_DATOS;
@@ -44,19 +50,16 @@ public class Listar_Objetos extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_listar_objetos);
-
+        setContentView(R.layout.activity_lista_usuario);
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("Listar");
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setDisplayShowHomeEnabled(true);
+        actionBar.setTitle("Objetos en Garita");
 
-        recyclerviewObjetos = findViewById(R.id.recyclerviewObjetos);
+        recyclerviewObjetos = findViewById(R.id.recyclerviewObjetosUser);
         recyclerviewObjetos.setHasFixedSize(true);
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         BASE_DE_DATOS = firebaseDatabase.getReference("Objetos_Publicados");
-        dialog = new Dialog(Listar_Objetos.this);
+        dialog = new Dialog(Lista_Usuario.this);
         ListarNotasUsuarios();
     }
 
@@ -100,7 +103,7 @@ public class Listar_Objetos extends AppCompatActivity {
                         String fecha_objeto = getItem(position).getFecha_objeto();
                         String estado = getItem(position).getEstado();
                         //enviamos los datos a la siguieten actividad
-                        Intent intent = new Intent(Listar_Objetos.this, Detalle_Objeto.class);
+                        Intent intent = new Intent(Lista_Usuario.this, Detalle_Usuario.class);
                         intent.putExtra("id_objeto",id_objeto);
                         intent.putExtra("uid_usuario",uid_usuario);
                         intent.putExtra("correo_usuario",correo_usuario);
@@ -125,48 +128,13 @@ public class Listar_Objetos extends AppCompatActivity {
                         String fecha_objeto = getItem(position).getFecha_objeto();
                         String estado = getItem(position).getEstado();
 
-                        //Declarar las vistas
-                        Button CD_Eliminar, CD_Actualizar;
-
-                        //Realizar la conexión con el diseño
-                        dialog.setContentView(R.layout.dialogo_opciones);
-
-                        //Inicializar las vistas
-                        CD_Eliminar = dialog.findViewById(R.id.CD_Eliminar);
-                        CD_Actualizar = dialog.findViewById(R.id.CD_Actualizar);
-                        CD_Eliminar.setOnClickListener(new View.OnClickListener(){
-                            @Override
-                            public void onClick(View view) {
-                                EliminarNota(id_objeto);
-                                dialog.dismiss();
-                            }
-                        });
-                        CD_Actualizar.setOnClickListener(new View.OnClickListener(){
-                            @Override
-                            public void onClick(View view) {
-                                //Toast.makeText(Listar_Notas.this, "Actualizar nota", Toast.LENGTH_SHORT).show();
-                                //startActivity(new Intent(Listar_Notas.this, Actualizar_Nota.class));
-                                Intent intent = new Intent(Listar_Objetos.this, Actualizar_Objeto.class);
-                                intent.putExtra("id_objeto",id_objeto);
-                                intent.putExtra("uid_usuario",uid_usuario);
-                                intent.putExtra("correo_usuario",correo_usuario);
-                                intent.putExtra("fecha_hora_registro",fecha_hora_registro);
-                                intent.putExtra("titulo",titulo);
-                                intent.putExtra("descripcion",descripcion);
-                                intent.putExtra("fecha_objeto",fecha_objeto);
-                                intent.putExtra("estado",estado);
-                                startActivity(intent);
-                                dialog.dismiss();
-                            }
-                        });
-                        dialog.show();
                     }
                 });
                 return viewHolder_objeto;
             }
         };
 
-        linearLayoutManager = new LinearLayoutManager(Listar_Objetos.this, LinearLayoutManager.VERTICAL, false);
+        linearLayoutManager = new LinearLayoutManager(Lista_Usuario.this, LinearLayoutManager.VERTICAL, false);
         linearLayoutManager.setReverseLayout(true);
         linearLayoutManager.setStackFromEnd(true);
 
@@ -176,40 +144,19 @@ public class Listar_Objetos extends AppCompatActivity {
     }
 
 
-    private void EliminarNota(String id_objeto) {
-        AlertDialog.Builder builder = new AlertDialog.Builder( Listar_Objetos.this );
-        builder.setTitle("Eliminar Objeto");
-        builder.setMessage("¿Desea eliminar el objeto?");
-        builder.setPositiveButton("SI", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                //ELIMINAR NOTA EN BD
-                Query query = BASE_DE_DATOS.orderByChild("id_objeto").equalTo(id_objeto);
-                query.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        for (DataSnapshot ds : snapshot.getChildren()){
-                            ds.getRef().removeValue();
-                        }
-                        Toast.makeText(Listar_Objetos.this, "Eliminado", Toast.LENGTH_SHORT).show();
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(Listar_Objetos.this, error.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
-            }
-        });
-        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                Toast.makeText(Listar_Objetos.this, "Cancelado por el usuario", Toast.LENGTH_SHORT).show();
-            }
-        });
-        builder.create().show();
-
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu_user, menu);
+        return super.onCreateOptionsMenu(menu);
     }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        startActivity(new Intent(Lista_Usuario.this, Login.class));
+        return super.onOptionsItemSelected(item);
+    }
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -218,10 +165,5 @@ public class Listar_Objetos extends AppCompatActivity {
         }
     }
 
-    @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return super.onSupportNavigateUp();
-    }
 
 }

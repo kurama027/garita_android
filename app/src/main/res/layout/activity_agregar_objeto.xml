@@ -11,27 +11,51 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="10dp">
-        <!--UID DEL USUARIO-->
 
+        <!--UID DEL USUARIO-->
         <TextView
             android:id="@+id/Uid_Usuario"
             android:hint="@string/Uid_Usuario"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"/>
+            android:textSize="18sp"
+            android:visibility="gone"/>
         <!--UID DEL CORREO DEL USUARIO-->
         <TextView
             android:id="@+id/Correo_usuario"
             android:hint="@string/Correo_usuario"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"/>
+            android:textSize="18sp"
+            android:visibility="gone"/>
+        <!--Icono Text view-->
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <!--icono-->
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/fecha_hora_registro"/>
+
+            <TextView
+                android:text="@string/Fecha_hora_actual_TXT"
+                android:textSize="20sp"
+                android:layout_marginStart="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+        <!--Fecha y hora actual del dispositivo-->
         <TextView
             android:id="@+id/Fecha_hora_actual"
             android:hint="@string/Fecha_hora_actual"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"/>
+            android:textSize="18sp"
+            android:layout_gravity="center"
+            android:textStyle="bold"/>
 
         <EditText
             android:id="@+id/Titulo"

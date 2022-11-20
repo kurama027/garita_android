@@ -14,6 +14,21 @@
         android:theme="@style/Theme.Garita_test"
         tools:targetApi="31">
         <activity
+            android:name=".ListaUsuario.Detalle_Usuario"
+            android:exported="false" />
+        <activity
+            android:name=".ListaUsuario.Lista_Usuario"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Detalle.Detalle_Objeto"
+            android:exported="false" />
+        <activity
             android:name=".ActualizarObjeto.Actualizar_Objeto"
             android:exported="false" />
         <activity android:name=".Perfil.Perfil_Usuario" />
@@ -22,13 +37,7 @@
         <activity android:name=".AgregarObjeto.Agregar_Objeto" />
         <activity
             android:name=".controlador.SplashActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="false"></activity>
         <activity
             android:name=".controlador.MenuPrincipal"
             android:exported="false" />
@@ -38,15 +47,7 @@
         <activity
             android:name=".controlador.Registro"
             android:exported="false" />
-        <activity
-            android:name=".controlador.MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".controlador.MainActivity" />
     </application>
 
 </manifest>
