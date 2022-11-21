@@ -174,7 +174,7 @@ public class MenuPrincipal extends AppCompatActivity {
 
     private void SalirAplicacion() {
         firebaseAuth.signOut();
-        startActivity(new Intent(MenuPrincipal.this,MainActivity.class));
+        startActivity(new Intent(MenuPrincipal.this,Lista_Usuario.class));
         Toast.makeText(this, "Cerraste sesion exitosamente", Toast.LENGTH_SHORT).show();
     }
     }

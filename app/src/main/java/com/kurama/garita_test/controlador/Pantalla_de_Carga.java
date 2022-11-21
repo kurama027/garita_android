@@ -44,5 +44,4 @@ public class Pantalla_de_Carga extends AppCompatActivity {
 
     }
 
-
 }

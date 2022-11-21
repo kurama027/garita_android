@@ -22,6 +22,8 @@ import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -35,6 +37,7 @@ import com.kurama.garita_test.Objetos.Objeto;
 import com.kurama.garita_test.R;
 import com.kurama.garita_test.ViewHolder.ViewHolder_Objeto;
 import com.kurama.garita_test.controlador.Login;
+import com.kurama.garita_test.controlador.MainActivity;
 import com.kurama.garita_test.controlador.MenuPrincipal;
 import com.kurama.garita_test.controlador.Pantalla_de_Carga;
 
@@ -43,6 +46,7 @@ public class Lista_Usuario extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
     DatabaseReference BASE_DE_DATOS;
     LinearLayoutManager linearLayoutManager;
+
     FirebaseRecyclerAdapter<Objeto, ViewHolder_Objeto> firebaseRecyclerAdapter;
     FirebaseRecyclerOptions<Objeto> options;
     Dialog dialog;
@@ -156,6 +160,8 @@ public class Lista_Usuario extends AppCompatActivity {
         startActivity(new Intent(Lista_Usuario.this, Login.class));
         return super.onOptionsItemSelected(item);
     }
+
+
 
     @Override
     protected void onStart() {
