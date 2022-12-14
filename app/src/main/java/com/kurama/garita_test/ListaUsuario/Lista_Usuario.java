@@ -20,6 +20,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
@@ -82,7 +83,8 @@ public class Lista_Usuario extends AppCompatActivity {
                         objeto.getTitulo(),
                         objeto.getDescripcion(),
                         objeto.getFecha_objeto(),
-                        objeto.getEstado()
+                        objeto.getEstado(),
+                        objeto.getImagen()
                 );
 
             }
@@ -106,6 +108,7 @@ public class Lista_Usuario extends AppCompatActivity {
                         String descripcion = getItem(position).getDescripcion();
                         String fecha_objeto = getItem(position).getFecha_objeto();
                         String estado = getItem(position).getEstado();
+                        String imagen = getItem(position).getImagen();
                         //enviamos los datos a la siguieten actividad
                         Intent intent = new Intent(Lista_Usuario.this, Detalle_Usuario.class);
                         intent.putExtra("id_objeto",id_objeto);
@@ -116,6 +119,7 @@ public class Lista_Usuario extends AppCompatActivity {
                         intent.putExtra("descripcion",descripcion);
                         intent.putExtra("fecha_objeto",fecha_objeto);
                         intent.putExtra("estado",estado);
+                        intent.putExtra("imagen", imagen);
                         startActivity(intent);
 
                     }
@@ -131,6 +135,7 @@ public class Lista_Usuario extends AppCompatActivity {
                         String descripcion = getItem(position).getDescripcion();
                         String fecha_objeto = getItem(position).getFecha_objeto();
                         String estado = getItem(position).getEstado();
+                        String imagen = getItem(position).getImagen();
 
                     }
                 });
@@ -146,6 +151,7 @@ public class Lista_Usuario extends AppCompatActivity {
         recyclerviewObjetos.setAdapter(firebaseRecyclerAdapter);
 
     }
+
 
 
     @Override

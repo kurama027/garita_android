@@ -2,6 +2,7 @@ package com.kurama.garita_test.ViewHolder;
 //permite conectar con la base de datos
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -9,6 +10,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.kurama.garita_test.R;
 
 public class ViewHolder_Objeto extends RecyclerView.ViewHolder{
@@ -49,15 +58,22 @@ public class ViewHolder_Objeto extends RecyclerView.ViewHolder{
     }
 
     //los id de objetos
-    public void SetearDatos(Context context, String id_objeto , String uid_usuario, String correo_usuario,
-                            String fecha_hora_registro, String titulo, String descripcion, String fecha_objeto,
-                            String estado){
+    public void SetearDatos(Context context,
+                            String id_objeto,
+                            String uid_usuario,
+                            String correo_usuario,
+                            String fecha_hora_registro,
+                            String titulo,
+                            String descripcion,
+                            String fecha_objeto,
+                            String estado,
+                            String imagen){
 
         //DECLARAR LAS VISTAS
         TextView Id_objeto_Item, Uid_Usuario_Item, Correo_usuario_Item,Fecha_hora_registro_Item,Titulo_Item,
                 Descripcion_Item, Fecha_Item, Estado_Item;
 
-        ImageView Objeto_Encontrado_Item, Objeto_No_Encontrado_Item;
+        ImageView Objeto_Encontrado_Item, Objeto_No_Encontrado_Item, Imagen_objeto;
 
         //ESTABLECER LA CONEXIÓN CON EL ITEM
         Id_objeto_Item = mView.findViewById(R.id.Id_objeto_Item);
@@ -70,6 +86,7 @@ public class ViewHolder_Objeto extends RecyclerView.ViewHolder{
         Estado_Item = mView.findViewById(R.id.Estado_Item);
         Objeto_Encontrado_Item = mView.findViewById(R.id.Objeto_Encontrado_Item);
         Objeto_No_Encontrado_Item = mView.findViewById(R.id.Objeto_No_Encontrado_Item);
+        Imagen_objeto = mView.findViewById(R.id.Imagen_c_Item);
 
         //SETEAR LA INFORMACIÓN DENTRO DEL ITEM
         Id_objeto_Item.setText(id_objeto);
@@ -81,12 +98,29 @@ public class ViewHolder_Objeto extends RecyclerView.ViewHolder{
         Fecha_Item.setText(fecha_objeto);
         Estado_Item.setText(estado);
 
+
+
         // GESTIONAMOS EL COLOR DEL ESTADO
         if(estado.equals("Encontrado")){
             Objeto_Encontrado_Item.setVisibility(View.VISIBLE);
         } else {
             Objeto_No_Encontrado_Item.setVisibility(View.VISIBLE);
         }
+
+        try {
+            /*Si la imagen del contacto existe existe en la BD*/
+            Glide.with(context).load(imagen).placeholder(R.drawable.paimon_lost).into(Imagen_objeto);
+
+
+        }catch (Exception e){
+            /*Si la imagen del contacto NO existe existe en la BD*/
+            Glide.with(context).load(R.drawable.paimon_lost).into(Imagen_objeto);
+        }
+
+
     }
 
-}
+    }
+
+
+

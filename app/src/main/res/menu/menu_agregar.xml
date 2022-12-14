@@ -6,6 +6,7 @@
         android:icon="@drawable/icono_agregar_objeto"
         android:title="@string/Agregar_Objeto_BD"
         app:showAsAction="ifRoom">
-
     </item>
+
+
 </menu>

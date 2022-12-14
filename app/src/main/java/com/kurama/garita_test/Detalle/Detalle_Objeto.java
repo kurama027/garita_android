@@ -4,14 +4,19 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.kurama.garita_test.R;
 
 public class Detalle_Objeto extends AppCompatActivity {
 
     TextView Id_objeto_Detalle, Uid_usuario_Detalle, Correo_usuario_Detalle, Titulo_Detalle, Descripcion_Detalle,
     Fecha_Registro_Detalle, Fecha_Objeto_Detalle, Estado_Detalle;
+
+    ImageView Imagen_O_D;
 
     //DECLARAR LOS STRING PARA ALMACENAR LOS DATOS RECUPERADOS DE ACTIVIDAD ANTERIOR
     String id_objeto_R , uid_usuario_R , correo_usuario_R, fecha_registro_R, titulo_R, descripcion_R, fecha_R, estado_R;
@@ -28,6 +33,7 @@ public class Detalle_Objeto extends AppCompatActivity {
         InicializarVistas();
         RecuperarDatos();
         SetearDatosRecuperados();
+        ObtenerImagen();
     }
 
     private void InicializarVistas(){
@@ -39,6 +45,7 @@ public class Detalle_Objeto extends AppCompatActivity {
         Fecha_Registro_Detalle = findViewById(R.id.Fecha_Registro_Detalle);
         Fecha_Objeto_Detalle = findViewById(R.id.Fecha_Objeto_Detalle);
         Estado_Detalle = findViewById(R.id.Estado_Detalle);
+        Imagen_O_D = findViewById(R.id.Imagen_O_D);
     }
 
     private void RecuperarDatos(){
@@ -64,6 +71,20 @@ public class Detalle_Objeto extends AppCompatActivity {
         Estado_Detalle.setText(estado_R);
 
     }
+
+    private void ObtenerImagen(){
+        String imagen = getIntent().getStringExtra("imagen");
+
+        try {
+
+            Glide.with(getApplicationContext()).load(imagen).placeholder(R.drawable.paimon_lost).into(Imagen_O_D);
+
+        }catch (Exception e){
+
+            Toast.makeText(this, "Esperando imagen", Toast.LENGTH_SHORT).show();
+        }
+    }
+
 
     @Override
     public boolean onSupportNavigateUp() {

@@ -13,9 +13,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.kurama.garita_test.Objetos.Objeto;
@@ -28,10 +32,14 @@ import java.util.Locale;
 public class Agregar_Objeto extends AppCompatActivity {
 
     TextView Uid_Usuario, Correo_usuario, Fecha_hora_actual, Fecha, Estado;
+    ImageView Imagen_objeto;
+    ImageView Editar_imagen;
     EditText Titulo, Descripcion;
     Button Btn_Calendario;
 
     int dia, mes , anio;
+
+
 
     DatabaseReference BD_Firebase;
 
@@ -92,17 +100,18 @@ public class Agregar_Objeto extends AppCompatActivity {
         Fecha_hora_actual = findViewById(R.id.Fecha_hora_actual);
         Fecha = findViewById(R.id.Fecha);
         Estado = findViewById(R.id.Estado);
-
+        Imagen_objeto = findViewById(R.id.Imagen_objeto);
         Titulo = findViewById(R.id.Titulo);
         Descripcion = findViewById(R.id.Descripcion);
         Btn_Calendario = findViewById(R.id.Btn_Calendario);
-
         BD_Firebase = FirebaseDatabase.getInstance().getReference();
     }
 
     private void ObtenerDatos() {
         String uid_recuperado = getIntent().getStringExtra("Uid");
         String correo_recuperado = getIntent().getStringExtra("Correo");
+
+
 
         Uid_Usuario.setText(uid_recuperado);
         Correo_usuario.setText(correo_recuperado);
@@ -122,19 +131,25 @@ public class Agregar_Objeto extends AppCompatActivity {
         String descripcion = Descripcion.getText().toString();
         String fecha = Fecha.getText().toString();
         String estado = Estado.getText().toString();
+        String id_objeto = BD_Firebase.push().getKey();
+
+
+        ;
 
         //Validar datos
         if (!uid_usuario.equals("") && !correo_usuario.equals("") && !fecha_hora_actual.equals("") &&
                 !titulo.equals("") && !descripcion.equals("") && ! fecha.equals("") && !estado.equals("")){
 
-            Objeto objeto = new Objeto(correo_usuario+"/"+fecha_hora_actual,
+            Objeto objeto = new Objeto(id_objeto,
                     uid_usuario,
                     correo_usuario,
                     fecha_hora_actual,
                     titulo,
                     descripcion,
                     fecha,
-                    estado);
+                    estado,
+                 ""
+                   );
 
             String Objeto_usuario = BD_Firebase.push().getKey();
             //Establecer el nombre de la BD
@@ -148,6 +163,18 @@ public class Agregar_Objeto extends AppCompatActivity {
         }
         else {
             Toast.makeText(this, "Llenar todos los campos", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void Cargar_Imagen(String imagen_perfil) {
+        try {
+            /*Cuando la imagen ha sido traida exitosamente desde Firebase*/
+            Glide.with(getApplicationContext()).load(imagen_perfil).placeholder(R.drawable.paimon_lost).into(Imagen_objeto);
+
+        }catch (Exception e){
+            /*Si la imagen no fue traida con éxito*/
+            Glide.with(getApplicationContext()).load(R.drawable.paimon_lost).into(Imagen_objeto);
+
         }
     }
 

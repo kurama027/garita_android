@@ -47,6 +47,7 @@
     <string name="Agregar_Objeto_BD">Agregar</string>
     <string name="Actualizar_Objeto_BD">Actualizar</string>
     <string name="User">User</string>
+    <string name="Vaciar_objetos">Eliminar todos los objetos</string>
 
 
     <!--Item Objeto-->
@@ -84,6 +85,7 @@
     </string-array>
 
     <!--Detalle Objeto-->
+    <string name="DetalleObjetoTXT">Detalle del Objeto</string>
     <string name="Id_objeto_Detalle_TXT">Id del objeto: </string>
     <string name="Id_objeto_Detalle">Id objeto</string>
     <string name="Uid_usuario_Detalle_TXT">Uid de usuario: </string>

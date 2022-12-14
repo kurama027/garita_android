@@ -19,6 +19,8 @@ import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -41,6 +43,7 @@ public class Listar_Objetos extends AppCompatActivity {
     FirebaseRecyclerOptions<Objeto> options;
     Dialog dialog;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +57,8 @@ public class Listar_Objetos extends AppCompatActivity {
         recyclerviewObjetos = findViewById(R.id.recyclerviewObjetos);
         recyclerviewObjetos.setHasFixedSize(true);
 
+
+
         firebaseDatabase = FirebaseDatabase.getInstance();
         BASE_DE_DATOS = firebaseDatabase.getReference("Objetos_Publicados");
         dialog = new Dialog(Listar_Objetos.this);
@@ -61,6 +66,7 @@ public class Listar_Objetos extends AppCompatActivity {
     }
 
     private void ListarNotasUsuarios(){
+
         options = new FirebaseRecyclerOptions.Builder<Objeto>().setQuery(BASE_DE_DATOS, Objeto.class).build();
         firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Objeto, ViewHolder_Objeto>(options) {
 
@@ -75,7 +81,8 @@ public class Listar_Objetos extends AppCompatActivity {
                         objeto.getTitulo(),
                         objeto.getDescripcion(),
                         objeto.getFecha_objeto(),
-                        objeto.getEstado()
+                        objeto.getEstado(),
+                        objeto.getImagen()
                 );
 
             }
@@ -99,6 +106,8 @@ public class Listar_Objetos extends AppCompatActivity {
                         String descripcion = getItem(position).getDescripcion();
                         String fecha_objeto = getItem(position).getFecha_objeto();
                         String estado = getItem(position).getEstado();
+                        String imagen = getItem(position).getImagen();
+
                         //enviamos los datos a la siguieten actividad
                         Intent intent = new Intent(Listar_Objetos.this, Detalle_Objeto.class);
                         intent.putExtra("id_objeto",id_objeto);
@@ -109,6 +118,7 @@ public class Listar_Objetos extends AppCompatActivity {
                         intent.putExtra("descripcion",descripcion);
                         intent.putExtra("fecha_objeto",fecha_objeto);
                         intent.putExtra("estado",estado);
+                        intent.putExtra("imagen", imagen);
                         startActivity(intent);
 
                     }
@@ -124,6 +134,7 @@ public class Listar_Objetos extends AppCompatActivity {
                         String descripcion = getItem(position).getDescripcion();
                         String fecha_objeto = getItem(position).getFecha_objeto();
                         String estado = getItem(position).getEstado();
+                        String imagen = getItem(position).getImagen();
 
                         //Declarar las vistas
                         Button CD_Eliminar, CD_Actualizar;
@@ -155,6 +166,7 @@ public class Listar_Objetos extends AppCompatActivity {
                                 intent.putExtra("descripcion",descripcion);
                                 intent.putExtra("fecha_objeto",fecha_objeto);
                                 intent.putExtra("estado",estado);
+                                intent.putExtra("imagen", imagen);
                                 startActivity(intent);
                                 dialog.dismiss();
                             }
@@ -210,6 +222,9 @@ public class Listar_Objetos extends AppCompatActivity {
         builder.create().show();
 
     }
+
+
+
     @Override
     protected void onStart() {
         super.onStart();

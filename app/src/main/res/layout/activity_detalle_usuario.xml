@@ -12,6 +12,44 @@
         android:orientation="vertical"
         android:padding="5dp">
 
+        <!--Imagen portada y del objeto-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="match_parent"
+                android:layout_height="210dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/razorja" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/Imagen_OU_D"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="120dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/paimon_lost" />
+        </RelativeLayout>
+
+        <!--Titulo del objeto-->
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+            <TextView
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:text="@string/DetalleObjetoTXT"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
         <!--ICONO - TXT - ID NOTA-->
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"

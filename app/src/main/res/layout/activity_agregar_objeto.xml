@@ -47,6 +47,40 @@
                 android:layout_height="wrap_content"/>
 
         </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <!--Portada - Imagen de perfil-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <!--Portada-->
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/kleesearch" />
+
+            <!--Imagen de objeto-->
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/Imagen_objeto"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="120dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/paimon_lost" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/Editar_imagen"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="130dp"
+                android:layout_marginTop="230dp"
+                android:src="@drawable/editcamara" />
+
+        </RelativeLayout>
+
         <!--Fecha y hora actual del dispositivo-->
         <TextView
             android:id="@+id/Fecha_hora_actual"

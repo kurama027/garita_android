@@ -1,12 +1,12 @@
 package com.kurama.garita_test.Objetos;
 
 public class Objeto {
-    String id_objeto, uid_usuario, correo_usuario, fecha_hora_actual, titulo, descripcion, fecha_objeto, estado;
+    String id_objeto, uid_usuario, correo_usuario, fecha_hora_actual, titulo, descripcion, fecha_objeto, estado, imagen;
 
     public Objeto() {
     }
 
-    public Objeto(String id_objeto, String uid_usuario, String correo_usuario, String fecha_hora_actual, String titulo, String descripcion, String fecha_objeto, String estado) {
+    public Objeto(String id_objeto, String uid_usuario, String correo_usuario, String fecha_hora_actual, String titulo, String descripcion, String fecha_objeto, String estado, String imagen) {
         this.id_objeto = id_objeto;
         this.uid_usuario = uid_usuario;
         this.correo_usuario = correo_usuario;
@@ -15,6 +15,7 @@ public class Objeto {
         this.descripcion = descripcion;
         this.fecha_objeto = fecha_objeto;
         this.estado = estado;
+        this.imagen = imagen;
     }
 
     public String getId_objeto() {
@@ -79,5 +80,13 @@ public class Objeto {
 
     public void setEstado(String estado) {
         this.estado = estado;
+    }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
 }
