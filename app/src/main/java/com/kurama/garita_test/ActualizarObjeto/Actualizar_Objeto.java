@@ -17,6 +17,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -235,17 +236,28 @@ public class Actualizar_Objeto extends AppCompatActivity implements AdapterView.
         Spinner_estado.setOnItemSelectedListener(this);
     }
 
-    private void ActualizarObjetoBD(){
+    private void ActualizarObjetoBD(String uriIMAGEN){
         String tituloActualizar = Titulo_A.getText().toString();
         String descripcionActualizar = Descripcion_A.getText().toString();
         String fechaActualizar = Fecha_A.getText().toString();
         String estadoActualizar = Estado_nuevo.getText().toString();
+
+        progressDialog.setTitle("Actualizando la imagen");
+        progressDialog.show();
+
+        String id_objeto = getIntent().getStringExtra("id_objeto");
+
+        HashMap<String, Object> hashMap = new HashMap<>();
+        if (imagenUri != null){
+            hashMap.put("imagen", ""+uriIMAGEN);
+        }
 
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         //Establece el nombre de la base de datos
         DatabaseReference databaseReference = firebaseDatabase.getReference("Objetos_Publicados");
         //Consulta
         Query query = databaseReference.orderByChild("id_objeto").equalTo(id_objeto_R);
+        Log.i("QUERY", "QUERY" + query);
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -254,6 +266,7 @@ public class Actualizar_Objeto extends AppCompatActivity implements AdapterView.
                     ds.getRef().child("descripcion").setValue(descripcionActualizar);
                     ds.getRef().child("fecha_objeto").setValue(fechaActualizar);
                     ds.getRef().child("estado").setValue(estadoActualizar);
+                    ds.getRef().child("imagen").setValue(uriIMAGEN);
                 }
                 Toast.makeText(Actualizar_Objeto.this, "Objetos actualizado con exito", Toast.LENGTH_SHORT).show();
                 onBackPressed();
@@ -283,7 +296,8 @@ public class Actualizar_Objeto extends AppCompatActivity implements AdapterView.
                         Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
                         while (!uriTask.isSuccessful());
                         String UriIMAGEN = ""+uriTask.getResult();
-                        ActualizarImagenBD(UriIMAGEN);
+                        //ActualizarImagenBD(UriIMAGEN);
+                        ActualizarObjetoBD(UriIMAGEN);
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
@@ -383,7 +397,7 @@ public class Actualizar_Objeto extends AppCompatActivity implements AdapterView.
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.Actualizar_Objeto_BD:
-                ActualizarObjetoBD();
+                ActualizarObjetoBD("");
                 //Toast.makeText(this, "Nota Actualizada", Toast.LENGTH_SHORT).show();
                 break;
         }
