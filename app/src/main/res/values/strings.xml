@@ -29,6 +29,7 @@
     <string name="ListarObjetos">Mis Objetos</string>
     <string name="Archivados">Archivados</string>
     <string name="Perfil">Perfil</string>
+    <string name="Filtrar_Notas">Filtrar notas</string>
     <string name="ModoUser">Modo usuario</string>
     <string name="AcercaDe">Acerca de</string>
 
@@ -65,6 +66,17 @@
     <string name="ElijaOpcionTXT">Elija una opción</string>
     <string name="CD_Eliminar">Eliminar</string>
     <string name="CD_Actualizar">Actualizar</string>
+
+    <!--CUADRO DE DIÁLOGO - ELEGIR IMAGEN DE-->
+    <string name="ElegirImagenTXT">Elegir imagen de:</string>
+    <string name="Btn_Elegir_Galeria">Galería</string>
+    <string name="Btn_Elegir_Camara">Cámara</string>
+
+    <!--CUADRO DE DIÁLOGO - FILTRAR NOTAS-->
+    <string name="FiltroTXT">Filtrar objetos: </string>
+    <string name="Todas_notas">Todos</string>
+    <string name="Objetos_Encontrado">Encontrado</string>
+    <string name="Objetos_Perdido">Perdido</string>
 
     <!--ACTUALIZAR  OBJETO-->
     <string name="Id_Objeto_A">Id nota</string>

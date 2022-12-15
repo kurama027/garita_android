@@ -4,6 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/UPeU_GaritaApp/garita_android/app/src/main/res/layout/activity_actualizar_objeto.xml" value="0.72" />
+        <entry key="..\:/android/garita_android/app/src/main/res/layout/activity_actualizar_objeto.xml" value="0.22146739130434784" />
+        <entry key="..\:/android/garita_android/app/src/main/res/layout/cuadro_dialogo_elegir_imagen.xml" value="0.22146739130434784" />
+        <entry key="..\:/android/garita_android/app/src/main/res/layout/cuadro_dialogo_filtrar_objetos.xml" value="0.22146739130434784" />
+        <entry key="..\:/android/garita_android/app/src/main/res/layout/dialogo_opciones.xml" value="0.22146739130434784" />
+        <entry key="..\:/android/garita_android/app/src/main/res/menu/menu_objetos.xml" value="0.24895833333333334" />
+        <entry key="..\:/android/garita_android/app/src/main/res/menu/menu_user.xml" value="0.25" />
         <entry key="..\:/garita_test/app/src/main/res/drawable-anydpi/icono_agregar_objeto.xml" value="0.18" />
         <entry key="..\:/garita_test/app/src/main/res/drawable-anydpi/nombre_menu.xml" value="0.1715" />
         <entry key="..\:/garita_test/app/src/main/res/drawable-anydpi/titulo_objeto_detalle.xml" value="0.1715" />

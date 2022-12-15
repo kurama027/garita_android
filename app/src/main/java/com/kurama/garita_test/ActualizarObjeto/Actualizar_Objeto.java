@@ -12,11 +12,14 @@ import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.app.Activity;
 import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -68,6 +71,8 @@ public class Actualizar_Objeto extends AppCompatActivity implements AdapterView.
     ProgressDialog progressDialog;
     FirebaseUser user;
     FirebaseAuth firebaseAuth;
+
+    Dialog dialog_elegir_imagen;
 
 
     Spinner Spinner_estado;
@@ -369,6 +374,10 @@ public class Actualizar_Objeto extends AppCompatActivity implements AdapterView.
                 }
             }
     );
+
+
+
+
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {

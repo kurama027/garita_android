@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item
-        android:id="@+id/User"
-        android:icon="@drawable/icono_admin"
-        android:title="@string/User"
-        app:showAsAction="ifRoom">
-    </item>
+
+
 
     <item
         android:id="@+id/Filtrar_Notas"
